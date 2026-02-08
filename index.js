@@ -113,3 +113,9 @@ async function updateSheet(phone, status) {
 app.listen(3000, () => {
   console.log("🚀 Webhook running on port 3000");
 });
+
+app.get("/ping", (req, res) => {
+  console.log("✅ Ping received");
+  res.send("Server is alive");
+});
+
