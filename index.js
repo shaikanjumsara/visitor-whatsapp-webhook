@@ -1,3 +1,8 @@
+app.get("/", (req, res) => {
+  console.log("✅ Root hit");
+  res.send("Webhook server is running");
+});
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const { GoogleSpreadsheet } = require("google-spreadsheet");
