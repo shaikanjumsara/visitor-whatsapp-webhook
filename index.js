@@ -19,6 +19,7 @@ const PRIVATE_KEY = `-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAA
    VERIFY WEBHOOK
 ================================ */
 app.get("/webhook", (req, res) => {
+   console.log("webhook called");
   const mode = req.query["hub.mode"];
   const token = req.query["hub.verify_token"];
   const challenge = req.query["hub.challenge"];
@@ -26,6 +27,8 @@ app.get("/webhook", (req, res) => {
   if (mode === "subscribe" && token === VERIFY_TOKEN) {
     console.log("✅ Webhook verified");
     return res.status(200).send(challenge);
+  } else {
+     console.log("validation failed");
   }
   return res.sendStatus(403);
 });
